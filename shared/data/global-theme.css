@@ -1,0 +1,144 @@
+/* shared/css/global-theme.css */
+
+:root {
+  /* Core Palette */
+  --bg-color: #ffffff;
+  --text-color: #0f0f0f;
+  --main-color: #007bbf;
+  --accent-1: #fee9b7;
+  --accent-2: #9b4b31;
+
+  /* UI States & Neutral Tones */
+  --disabled-bg: #e0e0e0;
+  --disabled-text: #9e9e9e;
+  
+  /* Spacing & Layout */
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Standard Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Open Sans', 'Roboto', 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  font-size: 18px; /* Optimized base size for early readers */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Dark Mode Override - Enforce strictly for contrast reliability */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+  }
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+  line-height: 1.2;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+/* Layout Utilities */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Components: Cards */
+.card {
+  background-color: var(--bg-color);
+  border: 2px solid var(--accent-1);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* Components: Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  background-color: var(--disabled-bg);
+  color: var(--disabled-text);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary {
+  background-color: var(--main-color);
+  color: var(--bg-color);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #005f99; 
+}
+
+.btn-accent {
+  background-color: var(--accent-2);
+  color: var(--bg-color);
+}
+
+.btn-accent:hover:not(:disabled) {
+  background-color: #7a3a25; 
+}
+
+/* Utilities: Print overrides */
+@media print {
+  .print-btn {
+    display: none !important;
+  }
+}
